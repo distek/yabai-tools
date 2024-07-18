@@ -1,0 +1,44 @@
+# Example config - default path is $HOME/.config/yabai/tools/config.yaml
+fullscreen:
+  full:
+    commands:
+      - sketchybar -m --bar hidden=on
+  restore:
+    commands:
+      - sketchybar -m --bar hidden=off
+close:
+  commands:
+    pre:
+      - sketchybar -m --bar hidden=off
+    post:
+      - yabai -m window --focus next
+switch:
+  if-fullscreen:
+    commands:
+      - sketchybar -m --bar hidden=on
+  else:
+    commands:
+      - sketchybar -m --bar hidden=off
+scratchpads:
+  - name: "calendar"
+    app: "Calendar"
+    open-command: "open /System/Applications/Calendar.app"
+  - name: "scratchpad"
+    title: "^SCRATCHPAD$"
+    app: "Alacritty"
+    open-command: "/Applications/Alacritty.app/Contents/MacOS/alacritty -t SCRATCHPAD --option window.dimensions.columns=90 --option window.dimensions.lines=40 -e bash -c ~/.local/bin/scratch"
+  - name: "notes"
+    title: "^VIMNOTES$"
+    app: "Alacritty"
+    open-command: "/Applications/Alacritty.app/Contents/MacOS/alacritty -t VIMNOTES --option window.dimensions.columns=110 --option window.dimensions.lines=40 -e /bin/bash -c ~/.local/bin/wiki"
+  - name: "apple-notes"
+    title: "^Notes$"
+    app: "Notes"
+    open-command: "open /System/Applications/Notes.app"
+  - name: "terminal"
+    title: "^SCRATCHTERM$"
+    app: "Alacritty"
+    open-command: "/Applications/Alacritty.app/Contents/MacOS/alacritty -t SCRATCHTERM --option window.dimensions.columns=90 --option window.dimensions.lines=40"
+  - name: "messages"
+    app: "Messages"
+    open-command: "open /System/Applications/Messages.app"
