@@ -88,17 +88,17 @@ func main() {
 
 	switch {
 	case window.Space != currentSpace.Index:
-		internal.RunCmd(fmt.Sprintf("-m window %d --space %d", window.ID, currentSpace.Index))
+		_, _ = internal.RunCmd(fmt.Sprintf("-m window %d --space %d", window.ID, currentSpace.Index))
 
-		internal.RunCmd(fmt.Sprintf("-m window --focus %d", window.ID))
+		_, _ = internal.RunCmd(fmt.Sprintf("-m window --focus %d", window.ID))
 
 		// Re-adjusts the border position
-		internal.RunCmd(fmt.Sprintf("-m window --move abs:%d:%d", int(window.Frame.X)+1, int(window.Frame.Y)+1))
+		_, _ = internal.RunCmd(fmt.Sprintf("-m window --move abs:%d:%d", int(window.Frame.X)+1, int(window.Frame.Y)+1))
 	case window.Space == currentSpace.Index && !window.HasFocus:
-		internal.RunCmd(fmt.Sprintf("-m window --focus %d", window.ID))
+		_, _ = internal.RunCmd(fmt.Sprintf("-m window --focus %d", window.ID))
 	default:
-		internal.RunCmd(fmt.Sprintf("-m window %d --space %d", window.ID, config.ScratchpadWorkspace))
-		internal.RunCmd(fmt.Sprintf("-m window --focus recent"))
+		_, _ = internal.RunCmd(fmt.Sprintf("-m window %d --space %d", window.ID, config.ScratchpadWorkspace))
+		_, _ = internal.RunCmd("-m window --focus recent")
 	}
 }
 

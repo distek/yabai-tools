@@ -17,7 +17,6 @@ import (
 
 var (
 	fullscreenBool bool
-	message        string
 	config         structs.Config
 )
 

@@ -159,5 +159,5 @@ func main() {
 
 	resizeCmd := exec.Command("yabai", "-m", "window", "--resize", resizeVar)
 
-	resizeCmd.Start()
+	_ = resizeCmd.Start()
 }
